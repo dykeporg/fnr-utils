@@ -1,0 +1,13 @@
+div[style="overflow:visible"],
+div[style="overflow:visible"]+div[style="height:3px"],
+div[style="overflow:visible"]+div[style="height: 3px"],
+div[style="overflow: visible;"],
+div[style="overflow: visible;"]+div[style="height: 3px;"],
+div[style="overflow: visible;"]+div[style="height:3px;"],
+#criteo_sticky,
+body>iframe:not(#forum-save),
+.slm-instream-player-container,
+ins,
+.slm_sticky {
+  display: none!important;
+}
