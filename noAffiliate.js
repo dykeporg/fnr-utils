@@ -1,0 +1,6 @@
+forumConfig['affiliatesMax'] = {
+    regular: 0,
+    elite: 0,
+    directory: 12,
+    sister: 8
+};
