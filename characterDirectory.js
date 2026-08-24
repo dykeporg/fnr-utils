@@ -3,7 +3,7 @@ Vue.component('directorio-personajes', {
         return {
             loading: true,
             config: forumConfig,
-            logged: !document.querySelector('body').classList.contains('is-unknown'),
+            logged: false,
             busqueda: {
                 name: '',
                 faceClaim: '',
@@ -19,8 +19,8 @@ Vue.component('directorio-personajes', {
         directoryFields() {
             const fields = this.config.profileUser.directoryFields;
 
-            if (!this.logged) {
-                fields.splice(fields.indexOf('usuario'), 1);
+            if (this.logged) {
+                fields.unshift('usuario');
             }
 
             return fields;
@@ -87,6 +87,7 @@ Vue.component('directorio-personajes', {
         }
     },
     created() {
+        FNR.user.getGroup().then(r => this.logged = r !== 'unknown');
         this.obtainCharacters();
     },
     mounted() {
