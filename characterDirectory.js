@@ -3,7 +3,7 @@ Vue.component('directorio-personajes', {
         return {
             loading: true,
             config: forumConfig,
-            logged: _userdata.groupcolor !== '',
+            logged: !document.querySelector('body').classList.contains('is-unknown'),
             busqueda: {
                 name: '',
                 faceClaim: '',
