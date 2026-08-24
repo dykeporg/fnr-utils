@@ -87,26 +87,29 @@ Vue.component('directorio-personajes', {
         }
     },
     created() {
-        FNR.user.getGroup().then(r => this.logged = r !== 'unknown');
         this.obtainCharacters();
     },
     mounted() {
-        document.title = 'Directorio';
+        FNR.user.getGroup().then(r => {
+            this.logged = r !== 'unknown';
+        
+            document.title = 'Directorio';
 
-        const url = new URL(window.location.href);
+            const url = new URL(window.location.href);
 
-        if (url.searchParams.has('group')) {
-            this.busqueda.group = url.searchParams.get('group');
-        }
+            if (url.searchParams.has('group')) {
+                this.busqueda.group = url.searchParams.get('group');
+            }
 
-        if (url.searchParams.has('user') && this.logged) {
-            this.busqueda.user = url.searchParams.get('user');
-        } else if (url.searchParams.has('user')) {
-            this.updateParams('user');
-        }
+            if (url.searchParams.has('user') && this.logged) {
+                this.busqueda.user = url.searchParams.get('user');
+            } else if (url.searchParams.has('user')) {
+                this.updateParams('user');
+            }
 
-        document.addEventListener('directoryReady', () => {
-            FNR.behaviour.genMeassure();
+            document.addEventListener('directoryReady', () => {
+                FNR.behaviour.genMeassure();
+            });
         });
     },
     updated() {
