@@ -19,8 +19,8 @@ Vue.component('directorio-personajes', {
         directoryFields() {
             const fields = this.config.profileUser.directoryFields;
 
-            if (this.logged) {
-                fields.unshift('usuario');
+            if (!this.logged) {
+                fields.splice(fields.indexOf('usuario'), 1);
             }
 
             return fields;
